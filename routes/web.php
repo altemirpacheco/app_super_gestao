@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PrincipalController@principal');
 Route::get('/sobre', 'SobreNosController@sobreNos');
 Route::get('/contato', 'ContatoController@contato');
+
+Route::get(
+    'contato/{name}/{id}',
+    function (string $name, int $id) {
+        echo "$id - $name";
+    }
+)->where(['id' => '[0-9]+', 'name' => '[a-z]+']); // Faz a crítica com expressão numera pra só receber inteiro como parâmmetro
