@@ -22,6 +22,17 @@ class FornecedorController extends Controller
             'f11' => 'fornecedor 1'
         ];
         // $fornecedores = [];
-        return view('app.fornecedor.index', compact('fornecedores'));
+
+        $testeUnless = [
+            0 => [
+                'nome' => 'Nome 1',
+                'status' => 'N',
+                'cnpj' => '' // aqui é considerado um valor vazio
+            ]
+        ];
+
+        $testeSeVariavelExiste = 'Teste';
+
+        return view('app.fornecedor.index', compact('fornecedores', 'testeUnless', 'testeSeVariavelExiste'));
     }
 }
