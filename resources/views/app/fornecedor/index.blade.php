@@ -35,24 +35,42 @@
     // entra se for verdadeiro:
 
      {{ $testeSeVariavelExiste }}
-
 @endisset
 
 
-{{--  Testa para saber se uma variável ou array está vazio
-   É vazio nos seguintes casos:
+     {{--  Testa para saber se uma variável ou array está vazio
+        É vazio nos seguintes casos:
 
-   - ''
-   - 0
-   - 0.0
-   - '0'
-   - null
-   - false
-   - array()  - Array vazio
-   - $var - variavel com valor não atribuido
---}}
+        - ''
+        - 0
+        - 0.0
+        - '0'
+        - null
+        - false
+        - array()  - Array vazio
+        - $var - variavel com valor não atribuido
+        --}}
 
-@empty($testeUnless[0]['cnpj'])
+        @empty($testeUnless[0]['cnpj'])
+        <br>
+        O Valor está vazio.
+        @endempty
+
+    @isset($testeUnless)
+    {{-- Teste do Blade usando o ??
+        $variavel testada não estiver definida (isset)
+        ou
+        $variavel testada possuir valor nulo
+        --}}
+        <br>
+        CNPJ: {{ $testeUnless[0]['cnpj'] ?? 'Dado não foi informado'}} {{-- Ele vai imprimir o valor se existir ou essa informação se não existir --}}
+
+    @endisset
+
+@dd($fornecedores)
+
+    @foreach($fornecedores as $indice => $valor)
     <br>
-    O Valor está vazio.
-@endempty
+       {{ $indice }}
+    <br>
+    @endforeach
